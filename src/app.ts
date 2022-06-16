@@ -5,16 +5,16 @@ import cors from "cors";
 
 const app = express();
 const port = process.env.PORT || 8081;
-app.use(morgan("combine"));
+app.use(morgan("combined"));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/status", function (req, res) {
+app.get("/status", (req, res) => {
    res.send({
       message: "hello world!"
    });
 });
 
 app.listen(port, () => {
-    return console.log(`Express server is listening on port ${port}.`);
+    return console.log(`Express server is listening on port localhost:${port}.`);
 });
