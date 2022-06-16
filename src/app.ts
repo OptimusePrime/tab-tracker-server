@@ -1,11 +1,20 @@
-import * as express from "express";
-import * as bodyParser from "body-parser";
-import * as morgan from "morgan";
-import * as cors from "cors";
+import express from "express";
+import bodyParser from "body-parser";
+import morgan from "morgan";
+import cors from "cors";
 
 const app = express();
+const port = process.env.PORT || 8081;
 app.use(morgan("combine"));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.listen(process.env.PORT || 8081);
+app.get("/status", function (req, res) {
+   res.send({
+      message: "hello world!"
+   });
+});
+
+app.listen(port, () => {
+    return console.log(`Express server is listening on port ${port}.`);
+});
